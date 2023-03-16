@@ -20,8 +20,8 @@ class MapDataset(Dataset):
         img_path = os.path.join(self.root_dir, img_file)
         img = Image.open(img_path).convert("RGB")
         image = np.array(img)
-        input_image = image[:, :256, :]   #   H W  channels
-        target_image = image[:, 256:, :]
+        input_image = image[:, 256:, :]   #   H W  channels
+        target_image = image[:, :256, :]
         #  数据增强  具体查看config.py
         augmentations = config.both_transform(image=input_image, image0=target_image)
         input_image = augmentations["image"]
